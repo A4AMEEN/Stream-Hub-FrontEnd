@@ -1,0 +1,7 @@
+.input-small {
+    max-width: 300px; /* Set a maximum width for the input fields */
+    width: 100%; /* Make the input fields take up the full width of the parent container */
+    padding: 0.5rem; /* Add padding for a more compact look */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  }
+  

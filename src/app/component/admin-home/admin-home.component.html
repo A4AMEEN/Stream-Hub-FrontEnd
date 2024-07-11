@@ -1,0 +1,14 @@
+<div class="admin-home">
+  <div class="sidebar">
+    <h2>Admin Dashboard</h2>
+    <ul>
+      <li><a routerLink="/adminHome/dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/adminHome/users" routerLinkActive="active">User Listing</a></li>
+      <li><a routerLink="/adminHome/categories" routerLinkActive="active">Categories</a></li>
+      <li><a (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

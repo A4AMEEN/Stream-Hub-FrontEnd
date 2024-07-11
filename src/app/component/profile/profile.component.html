@@ -1,0 +1,86 @@
+<!-- Header -->
+<header class="bg-white shadow">
+  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <div class="flex items-center">
+      <div class="logo-icon">
+        <i class="fas fa-play"></i>
+      </div>
+      <a href="landing" class="text-xl font-bold text-gray-800">Stream Hub</a>
+    </div>
+    <div class="flex items-center mx-auto">
+      <input type="text" placeholder="Search" class="bg-gray-200 rounded-full px-4 py-2 mr-4">
+      <button class="bg-red-500 text-white px-4 py-2 rounded-full">Search</button>
+    </div>
+    <div class="profile-container flex items-center space-x-4">
+      <div *ngIf="user">
+        <div class="profile-icon">
+          <i class="fas fa-user"></i>
+        </div>
+        <!-- <a href="#" class="text-gray-800">{{ user.name }}</a> -->
+        <button class="bg-red-500 text-white px-4 py-2 rounded-full" (click)="logout()">LogOut</button>
+      </div>
+    </div>
+    <button 
+    class="bg-red-500 text-white px-4 py-2 rounded-full"  *ngIf="!user"
+    [routerLink]="['/login']">
+    Login
+  </button>
+  
+  </div>
+  <!-- Categories in the header -->
+  <div class="container mx-auto py-3 flex justify-center space-x-4">
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-full">Gaming</button>
+    <button class="bg-green-500 text-white px-4 py-2 rounded-full">Vlogs</button>
+    <button class="bg-purple-500 text-white px-4 py-2 rounded-full">Music</button>
+    <button class="bg-yellow-500 text-white px-4 py-2 rounded-full">Movies</button>
+  </div>
+</header>
+
+<!-- Main Content -->
+<!-- Main Content -->
+<!-- Main Content -->
+<main class="container mx-auto px-6 py-8">
+  <div *ngIf="user; else notLoggedIn" class="bg-white shadow-md rounded-lg p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Profile Details</h1>
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="profile-icon rounded-full bg-gray-200 flex items-center justify-center w-16 h-16">
+        <i class="fas fa-user text-3xl text-gray-600"></i>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-gray-800">{{ user.name }}</h2>
+        <p class="text-gray-600">{{ user.email }}</p>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-full mt-4" (click)="showChangePassword = !showChangePassword">Change Password</button>
+      </div>
+    </div>
+    <div *ngIf="showChangePassword">
+      <div class="mt-4 max-w-md">
+        <label for="oldPassword" class="block text-gray-700">Old Password:</label>
+        <input type="password" id="oldPassword" [(ngModel)]="oldPassword" class="bg-gray-200 rounded-full px-4 py-2 w-full">
+      </div>
+      <div class="mt-4 max-w-md">
+        <label for="newPassword" class="block text-gray-700">New Password:</label>
+        <input type="password" id="newPassword" [(ngModel)]="newPassword" class="bg-gray-200 rounded-full px-4 py-2 w-full">
+        <div *ngIf="passwordError" class="text-red-500 text-sm mt-1">{{ passwordError }}</div>
+        <div *ngIf="error && !error.includes('Old password')" class="text-red-500 text-sm mt-1">{{ error }}</div>
+      </div>
+      <button class="bg-green-500 text-white px-4 py-2 rounded-full mt-4" (click)="resetPassword()">Reset Password</button>
+    </div>
+    <div>
+      <!-- Add more profile details here as needed -->
+    </div>
+  </div>
+  <ng-template #notLoggedIn>
+    <div class="bg-white shadow-md rounded-lg p-8">
+      <h1 class="text-3xl font-bold text-gray-800 mb-8">Profile Details</h1>
+      <p class="text-gray-600">You need to sign in to view the profile details.</p>
+    </div>
+  </ng-template>
+</main>
+
+
+<!-- Footer -->
+<footer class="bg-white shadow mt-12">
+  <div class="container mx-auto px-6 py-4 text-center">
+    <p class="text-gray-600">© 2024 Stream Hub. All rights reserved.</p>
+  </div>
+</footer>
